@@ -1,4 +1,4 @@
-namespace WebApplication1.Models.Enums;
+namespace ExamTakingApp.Models.Enums;
 
 public enum RolesEnum
 {

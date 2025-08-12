@@ -1,5 +1,5 @@
 using System.Threading.RateLimiting;
-using WebApplication1;
+using ExamTakingApp;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRateLimiter(options =>
@@ -46,9 +46,8 @@ app.MapControllerRoute(
     .WithStaticAssets();
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area:exists}/{controller=DashBoasrd}/{action=Index}/{id?}"
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
 );
-app.UseHttpsRedirection();
 
 
 app.Run();

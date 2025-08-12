@@ -1,6 +1,6 @@
-using WebApplication1.Models.Common;
+using ExamTakingApp.Models.Common;
 
-namespace WebApplication1.Models;
+namespace ExamTakingApp.Models;
 
 public sealed class Question:BaseEntity
 {

@@ -1,6 +1,6 @@
-using WebApplication1.Models;
+using ExamTakingApp.Models;
 
-namespace WebApplication1.ViewModels.Exam;
+namespace ExamTakingApp.ViewModels.Exam;
 
 public record ExamDetailsDto
 {

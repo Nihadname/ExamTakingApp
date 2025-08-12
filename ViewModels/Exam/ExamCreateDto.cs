@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication1.ViewModels.Exam;
+namespace ExamTakingApp.ViewModels.Exam;
 
 public sealed record ExamCreateDto
 {

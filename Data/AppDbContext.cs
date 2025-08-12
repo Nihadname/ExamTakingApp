@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
+using ExamTakingApp.Models;
 
-namespace WebApplication1.Data;
+namespace ExamTakingApp.Data;
 
 public sealed class AppDbContext:IdentityDbContext<AppUser>
 {

@@ -1,4 +1,4 @@
-namespace WebApplication1.Models;
+namespace ExamTakingApp.Models;
 
 public class ErrorViewModel
 {

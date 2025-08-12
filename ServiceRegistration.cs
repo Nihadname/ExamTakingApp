@@ -1,10 +1,10 @@
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using ExamTakingApp.Data;
+using ExamTakingApp.Models;
 
-namespace WebApplication1;
+namespace ExamTakingApp;
 
 public static class ServiceRegistration
 {

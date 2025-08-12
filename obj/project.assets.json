@@ -7852,11 +7852,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nihadibadzade/RiderProjects/WebApplication1/WebApplication1/WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "/Users/nihadibadzade/RiderProjects/WebApplication1/WebApplication1/WebApplication1.csproj",
+      "projectUniqueName": "/Users/nihadibadzade/ExamTakingApp/ExamTakingApp.csproj",
+      "projectName": "ExamTakingApp",
+      "projectPath": "/Users/nihadibadzade/ExamTakingApp/ExamTakingApp.csproj",
       "packagesPath": "/Users/nihadibadzade/.nuget/packages/",
-      "outputPath": "/Users/nihadibadzade/RiderProjects/WebApplication1/WebApplication1/obj/",
+      "outputPath": "/Users/nihadibadzade/ExamTakingApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nihadibadzade/.nuget/NuGet/NuGet.Config"

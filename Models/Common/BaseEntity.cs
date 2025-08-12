@@ -1,4 +1,4 @@
-namespace WebApplication1.Models.Common;
+namespace ExamTakingApp.Models.Common;
 
 public abstract class BaseEntity
 {

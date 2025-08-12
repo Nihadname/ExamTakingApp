@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LgiaHDYMXE4=",
+  "dgSpecHash": "mZ+WESnqT+8=",
   "success": true,
-  "projectFilePath": "/Users/nihadibadzade/RiderProjects/WebApplication1/WebApplication1/WebApplication1.csproj",
+  "projectFilePath": "/Users/nihadibadzade/ExamTakingApp/ExamTakingApp.csproj",
   "expectedPackageFiles": [
     "/Users/nihadibadzade/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/nihadibadzade/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

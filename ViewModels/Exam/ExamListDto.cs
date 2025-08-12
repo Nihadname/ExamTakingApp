@@ -1,4 +1,4 @@
-namespace WebApplication1.ViewModels.Exam;
+namespace ExamTakingApp.ViewModels.Exam;
 
 public sealed record ExamListDto()
 {

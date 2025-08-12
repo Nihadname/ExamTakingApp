@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
-using WebApplication1.Models.Enums;
-using WebApplication1.ViewModels.Auth;
+using ExamTakingApp.Models;
+using ExamTakingApp.Models.Enums;
+using ExamTakingApp.ViewModels.Auth;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Controllers
+namespace ExamTakingApp.Controllers
 {
     public class AccountController : Controller
     {

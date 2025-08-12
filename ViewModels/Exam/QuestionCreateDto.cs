@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using WebApplication1.Models;
+using ExamTakingApp.Models;
 
-namespace WebApplication1.ViewModels.Exam;
+namespace ExamTakingApp.ViewModels.Exam;
 
 public sealed record QuestionCreateDto()
 {

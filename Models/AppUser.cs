@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace WebApplication1.Models;
+namespace ExamTakingApp.Models;
 
 public sealed class AppUser:IdentityUser
 {

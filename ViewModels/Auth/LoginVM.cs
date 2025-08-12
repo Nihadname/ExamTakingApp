@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication1.ViewModels.Auth;
+namespace ExamTakingApp.ViewModels.Auth;
 
 public sealed record LoginVM
 {

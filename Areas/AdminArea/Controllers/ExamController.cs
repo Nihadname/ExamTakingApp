@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Models;
-using WebApplication1.ViewModels.Exam;
+using ExamTakingApp.Data;
+using ExamTakingApp.Models;
+using ExamTakingApp.ViewModels.Exam;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Areas.AdminArea.Controllers
+namespace ExamTakingApp.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
     public class ExamController : Controller
