@@ -27,7 +27,7 @@ namespace ExamTakingApp.Controllers
         }
 
         // GET: Account/Register
-        public IActionResult Register()
+        public IActionResult RegisterForLevelExam()
         {
             return View();
         }
@@ -35,7 +35,7 @@ namespace ExamTakingApp.Controllers
         // POST: Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterVM registerVM)
+        public async Task<IActionResult> RegisterForLevelExam(RegisterVM registerVM)
         {
             if (!ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace ExamTakingApp.Controllers
                     PhoneNumber = registerVM.PhoneNumber,
                 };
 
-                var createResult = await _userManager.CreateAsync(appUser, registerVM.Password);
+                var createResult = await _userManager.CreateAsync(appUser, Guid.NewGuid().ToString());
                 if (!createResult.Succeeded)
                 {
                     return ReturnWithErrors(registerVM, createResult.Errors);
@@ -83,6 +83,70 @@ namespace ExamTakingApp.Controllers
                 }
 
                 // Sign in the user after successful registration
+                TempData["SuccessMessage"] = "Registration successful.";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                // Log exception (implement proper logging in production)
+                ModelState.AddModelError("", "An error occurred during registration.");
+                return View(registerVM);
+            }
+        }
+        public IActionResult RegisterForSatExam()
+        {
+            return View();
+        }
+                // POST: Account/Register
+        [HttpPost]
+        public async Task<IActionResult> RegisterForSatExam(RegisterSatExamVM registerVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(registerVM);
+            }
+
+            try
+            {
+                // Validate phone number uniqueness
+                if (await _userManager.Users.AnyAsync(u => u.PhoneNumber == registerVM.PhoneNumber))
+                {
+                    ModelState.AddModelError(nameof(RegisterVM.PhoneNumber), "This phone number is already registered.");
+                    return View(registerVM);
+                }
+
+                var appUser = new AppUser
+                {
+                    FirstName = registerVM.FirstName,
+                    LastName = registerVM.LastName,
+                    UserName = Guid.NewGuid().ToString(), 
+                    Email = Guid.NewGuid().ToString(),
+                    PhoneNumber = registerVM.PhoneNumber,
+                };
+
+                var createResult = await _userManager.CreateAsync(appUser, Guid.NewGuid().ToString());
+                if (!createResult.Succeeded)
+                {
+                    return ReturnWithErrorsRegisterSat(registerVM, createResult.Errors);
+                }
+
+                const string studentRole = nameof(RolesEnum.Student);
+                if (!await _roleManager.RoleExistsAsync(studentRole))
+                {
+                    var roleCreateResult = await _roleManager.CreateAsync(new IdentityRole(studentRole));
+                    if (!roleCreateResult.Succeeded)
+                    {
+                        return ReturnWithErrorsRegisterSat(registerVM, roleCreateResult.Errors);
+                    }
+                }
+
+                var addRoleResult = await _userManager.AddToRoleAsync(appUser, studentRole);
+                if (!addRoleResult.Succeeded)
+                {
+                    return ReturnWithErrorsRegisterSat(registerVM, addRoleResult.Errors);
+                }
+
+                // Sign in the user after successful registration
                 await _signInManager.SignInAsync(appUser, isPersistent: false);
                 TempData["SuccessMessage"] = "Registration successful.";
                 return RedirectToAction("Index", "Home");
@@ -94,7 +158,7 @@ namespace ExamTakingApp.Controllers
                 return View(registerVM);
             }
         }
-
+      
         // GET: Account/Login
         public IActionResult Login(string returnUrl = null)
         {
@@ -120,6 +184,12 @@ namespace ExamTakingApp.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Invalid phone number or password.");
+                    return View(loginVM);
+                }
+
+                if (user.UserType == UserType.LevelTestUser)
+                {
+                    ModelState.AddModelError("", "you cant login level test user");
                     return View(loginVM);
                 }
 
@@ -172,6 +242,14 @@ namespace ExamTakingApp.Controllers
         }
 
         private IActionResult ReturnWithErrors(RegisterVM model, IEnumerable<IdentityError> errors)
+        {
+            foreach (var error in errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+            return View(model);
+        }
+        private IActionResult ReturnWithErrorsRegisterSat(RegisterSatExamVM model, IEnumerable<IdentityError> errors)
         {
             foreach (var error in errors)
             {

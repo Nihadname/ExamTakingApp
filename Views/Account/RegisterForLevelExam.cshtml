@@ -1,0 +1,63 @@
+@model ExamTakingApp.ViewModels.Auth.RegisterVM
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>sign up</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register start -->
+<div class="register-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="login">
+                    <div class="login-form-container">
+                        <div class="login-text">
+                            <h2>sign up</h2>
+                            <span>Please fill in your details below.</span>
+                        </div>
+                        <div class="login-form">
+                            <form method="post" asp-action="Register">
+                                @Html.AntiForgeryToken()
+
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                                <input asp-for="FirstName" placeholder="First Name" />
+                                <span class="text-danger" asp-validation-for="FirstName"></span>
+
+                                <input asp-for="LastName" placeholder="Last Name" />
+                                <span class="text-danger" asp-validation-for="LastName"></span>
+
+                          
+                               
+                                <input asp-for="PhoneNumber" placeholder="Phone Number" />
+                                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+
+                                <div class="button-box">
+                                    <a asp-action="Login">Already have an account?</a>
+                                    <button type="submit" class="default-btn">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

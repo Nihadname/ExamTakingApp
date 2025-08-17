@@ -8,10 +8,20 @@ public sealed record RegisterVM
     public required string FirstName { get; init; }
     [Required, StringLength(100)]
     public required string LastName { get; init; }
-    [Required, DataType(DataType.Password)]
-    public required string Password { get; init; }
-    [Required, DataType(DataType.Password), Compare(nameof(Password))]
-    public required string RepeatPassword { get; init; }
-    [Required,Phone, DataType(DataType.PhoneNumber)]
+    [Required, StringLength(100),Phone]
     public required string PhoneNumber { get; init; }
+}
+public sealed record RegisterSatExamVM
+{
+    [Required, StringLength(200)]
+    public required string FirstName { get; init; }
+    [Required, StringLength(100)]
+    public required string LastName { get; init; }
+    [Required, StringLength(100),Phone]
+    public required string PhoneNumber { get; init; }
+    [Required, StringLength(100)]
+    public required string Password { get; init; }
+    
+    public required string RepeatPassword { get; init; }
+    
 }

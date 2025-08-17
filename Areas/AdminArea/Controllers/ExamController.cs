@@ -89,7 +89,7 @@ namespace ExamTakingApp.Areas.AdminArea.Controllers
         // GET: AdminArea/Exam/Create
         public IActionResult Create()
         {
-            return View(new ExamCreateDto());
+            return View();
         }
 
         // POST: AdminArea/Exam/Create
@@ -195,6 +195,8 @@ namespace ExamTakingApp.Areas.AdminArea.Controllers
         }
 
         // POST: AdminArea/Exam/Delete/5
+        // POST: AdminArea/Exam/Delete/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
@@ -217,14 +219,12 @@ namespace ExamTakingApp.Areas.AdminArea.Controllers
                 TempData["SuccessMessage"] = "Exam deleted successfully.";
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
+            catch
             {
-                // Log exception (implement proper logging in production)
                 TempData["ErrorMessage"] = "An error occurred while deleting the exam.";
-                return RedirectToAction(nameof(Index));
+                return Content("error");
             }
         }
-
         // GET: AdminArea/Exam/CreateQuestion/5
         public async Task<IActionResult> CreateQuestion(Guid examId)
         {

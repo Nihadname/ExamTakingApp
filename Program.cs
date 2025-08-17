@@ -33,21 +33,19 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(); // optional if you serve CSS/JS/images
 app.UseRouting();
 app.UseRateLimiter();
-
+app.UseAuthentication(); // if you have auth
 app.UseAuthorization();
-
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
-);
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-
+app.MapStaticAssets();
 app.Run();
